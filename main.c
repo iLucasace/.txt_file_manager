@@ -19,7 +19,8 @@ void main(){
         printf("0. Sair\n");
         printf("1. Inserir\n");
         printf("2. Remover\n");
-        printf("3. Buscar Arquivo\n\n");
+        printf("3. Buscar Arquivo\n");
+        printf("4. Buscar Termo\n\n");
 
         printf("Digite sua escolha: ");
         scanf("%d", &escolha);
@@ -50,6 +51,15 @@ void main(){
                 char *caminhoArq = lerCaminho();
                 buscarArq(&lista, caminhoArq);
                 
+        } else if(escolha == 4) {
+                system("clear");
+                printf("-> Buscar Termo <-\n\n");
+
+                char termo[20];
+                printf("Digite o termo: ");
+                scanf("%s", termo);
+
+                buscarCont(&lista, termo);
         } else {
                 printf("Opção Inválida!\n");
                 sleep(2);

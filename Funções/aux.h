@@ -27,10 +27,19 @@ RetornoBusca* buscar(Lista *lista, char *nomeArq);
 void buscarArq(Lista *lista, char *nomeArq);
 
 /**
+*imprime o nome dos arquivos e a quantidade de vezes que determinado termo aparece...\n
+*utiliza a função verificaCont para comparar a substring com a string contida em cada nó.
+*/
+void buscarCont(Lista *lista, char *termo);
+
+/**
 *remove um arquivo de dentro da lista encadeada...\n
 *utiliza o nó anterior, inicial e a quantidade de blocos da função buscar.
 */
 void removerArq(Lista *lista, char *nomeArq);
+
+///compara a substring recebida com a string contida no conteúdo de um nó.
+int verificaCont(char *str1, char *str2, int indice);
 
 ///solicita ao usuário o caminho do arquivo.
 char *lerCaminho();

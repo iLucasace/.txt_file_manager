@@ -122,6 +122,39 @@ void buscarArq(Lista *lista, char *nomeArq) {
     enterVoltar();
 }
 
+void buscarCont(Lista *lista, char *termo) {
+    Nó *ini = lista->fre;
+    Nó *ant = lista->fre;
+    int contador = 0;
+    int indice = 0;
+
+    if(ini == NULL) {
+        printf("\nERRO: A lista está vazia!");
+        enterVoltar();
+        return;
+    }
+
+    while(ini != NULL) {
+        do{
+            indice = verificaCont(ini->cont, termo, indice);
+            if(indice != -1)
+                contador++;
+        }while(indice != -1);
+
+        if(strcmp(ini->nome_arq, ant->nome_arq) != 0 || ini->prox == NULL) {
+            printf("\n\t%s - %d", ant->nome_arq, contador);
+            contador = 0;
+        }
+
+        indice = 0;
+        ant = ini;
+        ini = ini->prox;
+    }
+
+    printf("\n");
+    enterVoltar();
+}
+
 void removerArq(Lista *lista, char *nomeArq) {
     RetornoBusca *cont = buscar(lista, nomeArq);
 
@@ -175,6 +208,20 @@ void removerArq(Lista *lista, char *nomeArq) {
     printf("\nArquivo removido!");
     printf("\nTamanho da Lista: %d Nós\n", lista->tam);
     enterVoltar();
+}
+
+int verificaCont(char *str1, char *str2, int indice){
+    int i, aux = 0;
+
+    for(i = indice; i < strlen(str1); i++){
+        if(str1[i] == str2[aux])
+            aux++;
+        else
+            aux = 0;
+        if(aux == strlen(str2))
+            return i;
+    }
+    return -1;
 }
 
 char *lerCaminho() {
