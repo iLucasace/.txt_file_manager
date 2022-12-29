@@ -59,7 +59,7 @@ int remover(Memória *ram, char *nomeArq) {
 
     Nó* aux = ram->memo[id];
 
-    while (id != -1 && aux != NULL) {
+    while(id != -1 && aux != NULL) {
         ram->memo[id] = NULL;
         id = aux->prox;
         aux = ram->memo[id];
@@ -70,10 +70,10 @@ int remover(Memória *ram, char *nomeArq) {
 int buscar(Memória *ram, char *nomeArq) {
     int i = 0;
 
-    while (i < MAX_MEM) {
+    while(i < MAX_MEM) {
         Nó* atual = ram->memo[i];
 
-        if (atual != NULL && strcmp(atual->nome_arq, nomeArq) == 0) {
+        if(atual != NULL && strcmp(atual->nome_arq, nomeArq) == 0) {
             return i;
         }
 

@@ -52,9 +52,9 @@ void buscarArq(Memória* ram, char *nomeArq) {
     Nó* aux = ram->memo[id];
     int contador = 0;
 
-    printf("\n\tEndereço - Nome do Arquivo\n");
+    printf("\n\tEndereços na Memória:\n\n");
     while (id != -1 && aux != NULL) {
-        printf("\n\t%d - %s", id, aux->nome_arq);
+        printf("\t%d", id);
         id = aux->prox;
         aux = ram->memo[id];
         contador++;
