@@ -16,9 +16,12 @@ void lerArq(Memória *ram, char *nomeArq) {
      
     while(fgets(text, MAX_NO, textfile)){
         if(inserir(ram, text, nomeArq) == -1) {
-            printf("\nERRO: Memória cheia!");
+            remover(ram, nomeArq);
+            fclose(textfile);
+
+            printf("\nERRO: Memória cheia...");
             enterVoltar();
-            break;
+            return;
         }
     }
     
