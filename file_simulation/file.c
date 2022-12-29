@@ -19,7 +19,7 @@ void lerArq(Memória *ram, char *nomeArq) {
             remover(ram, nomeArq);
             fclose(textfile);
 
-            printf("\nERRO: Memória cheia...");
+            printf("\nERRO: Memória cheia!");
             enterVoltar();
             return;
         }
