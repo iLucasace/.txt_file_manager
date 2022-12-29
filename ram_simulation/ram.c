@@ -26,27 +26,24 @@ Nó *criarNó(char *cont, char *nomeArq) {
 }
 
 int inserir(Memória *ram, char *cont, char *nomeArq) {
-    if(ram->tamanho == MAX_MEM) {
+    if(ram->tamanho == MAX_MEM)
         return -1;
-    }
 
     static int anterior = 0;
-    int atual = 0;
-
-    if(ram->tamanho == 0) {
+    if(ram->tamanho == 0)
         anterior = 0;
-    }
-
+    
+    int atual = 0;
     while (atual < MAX_MEM && ram->memo[atual] != NULL) {
         atual++;
     }
 
     ram->memo[atual] = criarNó(cont, nomeArq);
 
-    if (strcmp(ram->memo[anterior]->nome_arq, nomeArq) != 0) {
+    if(strcmp(ram->memo[anterior]->nome_arq, nomeArq) != 0) {
         ram->memo[anterior]->prox = -1;
         anterior = atual;
-    } else if (anterior != atual) {
+    } else if(anterior != atual) {
         ram->memo[anterior]->prox = atual;
         anterior = atual;
     }
@@ -57,9 +54,8 @@ int inserir(Memória *ram, char *cont, char *nomeArq) {
 int remover(Memória *ram, char *nomeArq) {
     int id = buscar(ram, nomeArq);
 
-    if(id == -1) {
+    if(id == -1)
         return -1;
-    }
 
     Nó* aux = ram->memo[id];
 
