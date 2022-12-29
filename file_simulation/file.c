@@ -15,7 +15,11 @@ void lerArq(Memória *ram, char *nomeArq) {
     }
      
     while(fgets(text, MAX_NO, textfile)){
-        inserir(ram, text, nomeArq);
+        if(inserir(ram, text, nomeArq) == -1) {
+            printf("\nERRO: Memória cheia!");
+            enterVoltar();
+            break;
+        }
     }
     
     fclose(textfile);
@@ -24,10 +28,13 @@ void lerArq(Memória *ram, char *nomeArq) {
 }
 
 void removerArq(Memória* ram, char *nomeArq) {
-    remover(ram, nomeArq);
-
-    printf("\nArquivo removido!");
-    enterVoltar();
+    if(remover(ram, nomeArq) != -1) {
+        printf("\nArquivo removido!");
+        enterVoltar();
+    } else {
+        printf("\nERRO: Arquivo não encontrado!");
+        enterVoltar();
+    }
 }
 
 void buscarArq(Memória* ram, char *nomeArq) {
@@ -40,14 +47,17 @@ void buscarArq(Memória* ram, char *nomeArq) {
     }
 
     Nó* aux = ram->memo[id];
+    int contador = 0;
 
+    printf("\n\tEndereço - Nome do Arquivo\n");
     while (id != -1 && aux != NULL) {
         printf("\n\t%d - %s", id, aux->nome_arq);
         id = aux->prox;
         aux = ram->memo[id];
+        contador++;
     }
     
-    printf("\n");
+    printf("\n\nQuantidade de Blocos: %d\n", contador);
     enterVoltar();
 }
 

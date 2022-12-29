@@ -25,11 +25,9 @@ Nó *criarNó(char *cont, char *nomeArq) {
     return aux;
 }
 
-void inserir(Memória *ram, char *cont, char *nomeArq) {
+int inserir(Memória *ram, char *cont, char *nomeArq) {
     if(ram->tamanho == MAX_MEM) {
-        printf("\nERRO: Memória cheia!");
-        enterVoltar();
-        return;
+        return -1;
     }
 
     static int anterior = 0;
@@ -56,13 +54,11 @@ void inserir(Memória *ram, char *cont, char *nomeArq) {
     ram->tamanho += 1;
 }
 
-void remover(Memória *ram, char *nomeArq) {
+int remover(Memória *ram, char *nomeArq) {
     int id = buscar(ram, nomeArq);
 
     if(id == -1) {
-        printf("\nERRO: Arquivo não encontrado!");
-        enterVoltar();
-        return;
+        return -1;
     }
 
     Nó* aux = ram->memo[id];
