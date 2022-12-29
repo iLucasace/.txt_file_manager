@@ -1,28 +1,13 @@
-#define TAM_MAX_NO 50
+#define MAX_NO 128
+#define MAX_MEM 500
 
-/**
- * struct com o conteúdo dos nós.
-*/
-typedef struct __nó {
-    char nome_arq[30];
-    char cont[TAM_MAX_NO];
-    struct __nó *prox;
+typedef struct {
+    char cont_arq[MAX_NO];
+    char nome_arq[50];
+    int prox;
 } Nó;
 
-/**
- * struct para o controle da lista.
-*/
 typedef struct {
-    Nó *fre;
-    Nó *ret;
-    int tam;
-} Lista;
-
-/**
- * struct retornar o resultado da busca.
-*/
-typedef struct {
-    Nó *ant;
-    Nó *ini;
-    int qtd;
-} RetornoBusca;
+    Nó* memo[MAX_MEM];
+    unsigned int tamanho;
+} Memória;
