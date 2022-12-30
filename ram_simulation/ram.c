@@ -16,7 +16,7 @@ Memória *criarRAM() {
 }
 
 Nó *criarNó(char *cont, char *nomeArq) {
-    Nó* aux = (Nó*) malloc(sizeof(Nó));
+    Nó* aux = (Nó*)malloc(sizeof(Nó));
 
     aux->prox = -1;
     strcpy(aux->cont_arq, cont);
