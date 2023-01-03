@@ -3,14 +3,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "Funções/aux.h"
-
-/*! \brief Descrição do Programa:
- *  Esse programa é um gerenciador de arquivos .txt utilizando fila como lista encadeada.
-*/
+#include "file_simulation/file.h"
 
 void main(){
-    Lista lista = criarLista();
+    Memória *ram = criarRAM();
     int escolha;
 
     do {
@@ -19,8 +15,7 @@ void main(){
         printf("0. Sair\n");
         printf("1. Inserir\n");
         printf("2. Remover\n");
-        printf("3. Buscar Arquivo\n");
-        printf("4. Buscar Termo\n\n");
+        printf("3. Buscar Arquivo\n\n");
 
         printf("Digite sua escolha: ");
         scanf("%d", &escolha);
@@ -35,21 +30,21 @@ void main(){
                 printf("-> Inserir Arquivo <-\n\n");
 
                 char* caminhoArq = lerCaminho();
-                lerArq(&lista, caminhoArq);
+                lerArq(ram, caminhoArq);
   
         } else if(escolha == 2) {
                 system("clear");
                 printf("-> Remover Arquivo <-\n\n");
 
                 char *caminhoArq = lerCaminho();
-                removerArq(&lista, caminhoArq);
+                removerArq(ram, caminhoArq);
                 
         } else if(escolha == 3) {
                 system("clear");
                 printf("-> Buscar Arquivo <-\n\n");
                 
                 char *caminhoArq = lerCaminho();
-                buscarArq(&lista, caminhoArq);
+                buscarArq(ram, caminhoArq);
                 
         } else if(escolha == 4) {
                 system("clear");
@@ -59,7 +54,6 @@ void main(){
                 printf("Digite o termo: ");
                 scanf("%s", termo);
 
-                buscarCont(&lista, termo);
         } else {
                 printf("Opção Inválida!\n");
                 sleep(2);
